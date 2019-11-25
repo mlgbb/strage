@@ -1,4 +1,4 @@
-package com.example.strage.pojo;
+package study.Type;
 
 public class BasicType {
     public static void main(String[] args) {
