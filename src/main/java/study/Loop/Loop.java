@@ -68,5 +68,19 @@ public class Loop {
             System.out.println(q);
         }
         System.out.println("continue");
+
+
+        //迭代器
+        iterator();
+
+        //swtch..case
+        switchCase();
+    }
+
+    private static void iterator(){
+    }
+    private static void higherFor() {
+    }
+    private static void switchCase(){
     }
 }
