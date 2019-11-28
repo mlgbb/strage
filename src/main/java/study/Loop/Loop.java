@@ -79,8 +79,6 @@ public class Loop {
 
     private static void iterator(){
     }
-    private static void higherFor() {
-    }
     private static void switchCase(){
     }
 }
