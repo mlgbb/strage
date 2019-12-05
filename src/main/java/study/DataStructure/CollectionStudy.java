@@ -1,5 +1,6 @@
 package study.DataStructure;
 
+import java.lang.reflect.Array;
 import java.util.*;
 
 public class CollectionStudy {
@@ -28,6 +29,7 @@ public class CollectionStudy {
         //2、给一个arraryList添加，删除元素
         testList.add(3); // 添加
         testList.add(999);
+        testList.add(2019);
         int i = 5;
         while(i>0){
             testList.add(3 + (int)(Math.random()*7));
@@ -50,6 +52,9 @@ public class CollectionStudy {
         testList.remove(0);
         Integer x = 999;
         testList.remove(x);
+        // 需要注意的是如果remove的是对象 需要重写equals 和 hashcode 方法
+        testList.removeIf((Integer e) -> 2019  == e);
+
         iterator = testList.iterator();
         System.out.println("遍历");
         while(iterator.hasNext()){
@@ -67,9 +72,45 @@ public class CollectionStudy {
         System.out.println(testList);
 //        testList.clear(); //删除所有元素
         //4、如何初始化arraryLsit的长度（默认长度是多少，达到多少开始扩容，每次扩大到原来的几倍）
-        //默认是10 也可以进行指定
-        ArrayList<String> arrayList = new ArrayList<>(20);
-        
+
+        //默认是0 也可以进行指定
+        ArrayList<Integer> integers = new ArrayList<>(); // 默认为0
+        // 第一次添加后 DEFAULT_CAPACITY=10。
+
+        ArrayList<String> arrayList = new ArrayList<>(20); //指定为20
+        int [] a ={1,2,3,4,5};
+        String atest = "I want to test it ";
+        Collection<String> mySc = new ArrayList<String>(Arrays.asList("a","b","c"));
+        ArrayList<String> collections = new ArrayList<String>(mySc); //用集合去初始化
+        System.out.println(collections);
+
+        // 扩容的核心方法 grow();
+        //ArrayList扩容的核心方法，此方法用来决定扩容量
+//        当前数组是由自定义初始容量构造方法创建并且指定初始容量为0。此时minCapacity等于1那么根据下面逻辑可以看到最后数组的容量
+//        会从0变成1。这边可以看到一个严重的问题，一旦我们执行了初始容量为0，那么根据下面的算法前四次扩容每次都 +1，
+//        在第5次添加数据进行扩容的时候才是按照当前容量的1.5倍进行扩容。
+//    private void grow(int minCapacity) {
+//            // overflow-conscious code
+//            int oldCapacity = elementData.length;
+//            int newCapacity = oldCapacity + (oldCapacity >> 1);
+//            if (newCapacity - minCapacity < 0)
+//                newCapacity = minCapacity;
+//            if (newCapacity - MAX_ARRAY_SIZE > 0)
+//                newCapacity = hugeCapacity(minCapacity);
+//            // minCapacity is usually close to size, so this is a win:
+//            elementData = Arrays.copyOf(elementData, newCapacity);
+//        }
+//
+//        private static int hugeCapacity(int minCapacity) {
+//            if (minCapacity < 0) // overflow
+//                throw new OutOfMemoryError();
+//            return (minCapacity > MAX_ARRAY_SIZE) ?
+//                    Integer.MAX_VALUE :
+//                    MAX_ARRAY_SIZE;
+//        }
+//
+//    private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
+
 
     }
 
