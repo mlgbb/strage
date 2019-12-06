@@ -3,7 +3,8 @@ package study.DataStructure;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class CollectionStudy {
+public class CollectionStudy
+{
     public static void main(String[] args){
         //1、arraryList
         arrayList();
@@ -21,6 +22,7 @@ public class CollectionStudy {
     }
 
     private static void linkedList() {
+        List<String> list = new LinkedList<>();
     }
 
     private static void arrayList() {
@@ -111,6 +113,7 @@ public class CollectionStudy {
 //
 //    private static final int MAX_ARRAY_SIZE = Integer.MAX_VALUE - 8;
 
+        new CollectionStudy().demo();
 
     }
 
@@ -122,4 +125,37 @@ public class CollectionStudy {
 
     private static void hashMap() {
     }
+    // 泛型 快速失败机制
+    private void demo(){
+        //泛型
+        List<Integer> list = new ArrayList<>();
+        list.add(1);
+        list.add(2);
+        list.add(3);
+        // 快速失败机制
+        Iterator<Integer> iterator1 = list.iterator();
+        while (iterator1.hasNext()){
+            int index = iterator1.next();
+            list.remove(0);
+        }
+//        User user = new User();
+        //匿名内部类
+        List<Integer> linkedList = new LinkedList<Integer>(){{
+            add(1);
+        }};
+
+    }
 }
+
+//内部类
+//class User{
+//    private String userName;
+//    private int age;
+//    private Ability ablity;
+//}
+//
+//class Ability{
+//
+//    private String swiming;
+//    private boolean play;
+//}
