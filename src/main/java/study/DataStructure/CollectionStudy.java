@@ -7,7 +7,7 @@ public class CollectionStudy
 {
     public static void main(String[] args){
         //1、arraryList
-        arrayList();
+//        arrayList();
         
         //2、linkedList
         linkedList();
@@ -23,6 +23,33 @@ public class CollectionStudy
 
     private static void linkedList() {
         List<String> list = new LinkedList<>();
+        list.add("1");
+        list.add("2");
+        ((LinkedList<String>) list).offer("123"); //当作队列使用
+        list.add(2,"2.5");
+        ((LinkedList<String>) list).addFirst("0");
+        ((LinkedList<String>) list).addLast("+∞");
+
+        // 不改变原数组的最快遍历方式
+        //  通过removeFirst()和removeLast()来遍历LinkedList 是最快的
+        for (String integ:list){
+            System.out.println(integ);
+        }
+
+        String [] arr = (String[])list.toArray(new String[0]);
+        System.out.println(arr);
+         arr[0] = "100";
+        for (String x:arr){
+            System.out.println(x);
+        }
+        System.out.println(list.size());
+        list.clear();
+        System.out.println(list.isEmpty());
+
+        useLinkedListAsLIFO();
+
+        useLinkedListAsFIFO();
+
     }
 
     private static void arrayList() {
@@ -86,8 +113,8 @@ public class CollectionStudy
         ArrayList<String> collections = new ArrayList<String>(mySc); //用集合去初始化
         System.out.println(collections);
 
-        // 扩容的核心方法 grow();
-        //ArrayList扩容的核心方法，此方法用来决定扩容量
+//         扩容的核心方法 grow();
+//        ArrayList扩容的核心方法，此方法用来决定扩容量
 //        当前数组是由自定义初始容量构造方法创建并且指定初始容量为0。此时minCapacity等于1那么根据下面逻辑可以看到最后数组的容量
 //        会从0变成1。这边可以看到一个严重的问题，一旦我们执行了初始容量为0，那么根据下面的算法前四次扩容每次都 +1，
 //        在第5次添加数据进行扩容的时候才是按照当前容量的1.5倍进行扩容。
@@ -145,17 +172,65 @@ public class CollectionStudy
         }};
 
     }
+    private static void useLinkedListAsLIFO() {
+        System.out.println("\nuseLinkedListAsLIFO");
+        // 新建一个LinkedList
+        LinkedList stack = new LinkedList();
+
+        // 将1,2,3,4添加到堆栈中
+        stack.push("1");
+        stack.push("2");
+        stack.push("3");
+        stack.push("4");
+        // 打印“栈”
+        System.out.println("stack:"+stack);
+
+        // 删除“栈顶元素”
+        System.out.println("stack.pop():"+stack.pop());
+
+        // 取出“栈顶元素”
+        System.out.println("stack.peek():"+stack.peek());
+
+        // 打印“栈”
+        System.out.println("stack:"+stack);
+    }
+
+    /**
+     * 将LinkedList当作 FIFO(先进先出)的队列
+     */
+    private static void useLinkedListAsFIFO() {
+        System.out.println("\nuseLinkedListAsFIFO");
+        // 新建一个LinkedList
+        LinkedList queue = new LinkedList();
+
+        // 将10,20,30,40添加到队列。每次都是插入到末尾
+        queue.add("10");
+        queue.add("20");
+        queue.add("30");
+        queue.add("40");
+        // 打印“队列”
+        System.out.println("queue:"+queue);
+
+        // 删除(队列的第一个元素)
+        System.out.println("queue.remove():"+queue.remove());
+
+        // 读取(队列的第一个元素)
+        System.out.println("queue.element():"+queue.element());
+
+        // 打印“队列”
+        System.out.println("queue:"+queue);
+    }
 }
 
 //内部类
-//class User{
-//    private String userName;
-//    private int age;
-//    private Ability ablity;
-//}
-//
-//class Ability{
-//
-//    private String swiming;
-//    private boolean play;
-//}
+class User{
+    private String userName;
+    private int age;
+    private Ability ablity;
+}
+
+class Ability{
+
+    private String swiming;
+    private boolean play;
+}
