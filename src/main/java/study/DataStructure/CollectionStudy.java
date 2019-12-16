@@ -10,7 +10,7 @@ public class CollectionStudy
 //        arrayList();
         
         //2、linkedList
-        linkedList();
+//        linkedList();
         
         //3、HashMap
         hashMap();
@@ -151,6 +151,18 @@ public class CollectionStudy
     }
 
     private static void hashMap() {
+        HashMap<String,Integer> hashMap = new HashMap<>();
+        hashMap.put("郭昱峰",10);
+        hashMap.put("qq",20);
+        hashMap.put("fqq",30);
+        System.out.println(hashMap.get("qq"));
+        System.out.println(hashMap.size());
+        System.out.println(hashMap.replace("郭昱峰",10,20)); //允许重复
+        System.out.println(hashMap);
+        Set<String> keys = hashMap.keySet();
+        for (String key :keys) System.out.println(key);
+        Collection<Integer> values = hashMap.values();
+        System.out.println(values);
     }
     // 泛型 快速失败机制
     private void demo(){
@@ -220,7 +232,7 @@ public class CollectionStudy
         // 打印“队列”
         System.out.println("queue:"+queue);
     }
-}
+} 
 
 //内部类
 class User{
