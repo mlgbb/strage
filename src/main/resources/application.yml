@@ -1,1 +1,7 @@
-
+spring:
+  application:
+    name: test
+server:
+  port: 6001
+  servlet:
+    context-path: /mlgbb
