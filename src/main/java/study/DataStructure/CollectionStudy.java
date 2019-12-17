@@ -13,7 +13,7 @@ public class CollectionStudy
 //        linkedList();
         
         //3、HashMap
-        hashMap();
+//        hashMap();
         //4、TreeMap
         treeMap();
 
@@ -148,6 +148,7 @@ public class CollectionStudy
     }
 
     private static void treeMap() {
+
     }
 
     private static void hashMap() {
@@ -159,10 +160,22 @@ public class CollectionStudy
         System.out.println(hashMap.size());
         System.out.println(hashMap.replace("郭昱峰",10,20)); //允许重复
         System.out.println(hashMap);
-        Set<String> keys = hashMap.keySet();
-        for (String key :keys) System.out.println(key);
+
         Collection<Integer> values = hashMap.values();
         System.out.println(values);
+        System.out.println(hashMap.containsKey("qq"));
+        System.out.println(hashMap.containsValue(20));
+
+        Set<String> keys = hashMap.keySet();
+        for (String key :keys) System.out.println(key+":"+hashMap.get(key));
+
+        hashMap.replace("qq",1000);
+        hashMap.put("fqq",10);
+        hashMap.replace("qwe",9999);
+
+        Set<Map.Entry<String,Integer>> entrySet = hashMap.entrySet();
+        for (Map.Entry<String,Integer> entry : entrySet) System.out.println(entry.getKey()+":"+entry.getValue());
+
     }
     // 泛型 快速失败机制
     private void demo(){
