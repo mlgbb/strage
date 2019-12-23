@@ -17,9 +17,6 @@ public class CollectionStudy {
 //        hashMap();
         //4、TreeMap
         treeMap();
-
-        //5、ConcurrentHashMap
-        concurrentHashMap();
     }
 
     private static void linkedList() {
@@ -145,8 +142,6 @@ public class CollectionStudy {
 
     }
 
-    private static void concurrentHashMap() {
-    }
     private static void treeMap() {
         TreeMap<Integer, String> treeMap = new TreeMap<>();//红黑树数据结构实现的不能根据value来排序
         //非要排序的话 把TreeMap的EntrySet转换成list，然后使用Collections.sor排序
@@ -156,6 +151,7 @@ public class CollectionStudy {
         treeMap.put(6, "漩涡长门");
         treeMap.put(2, "宇智波斑");
         treeMap.put(3, "宇智波带土");
+        treeMap.put(10, "波风水门");
 
         System.out.println(treeMap);
         treeMap.remove(1);
@@ -190,7 +186,6 @@ public class CollectionStudy {
         });
         System.out.println(list);
 
-
     }
 
     private static void hashMap() {
@@ -209,14 +204,18 @@ public class CollectionStudy {
         System.out.println(hashMap.containsValue(20));
 
         Set<String> keys = hashMap.keySet();
-        for (String key : keys) System.out.println(key + ":" + hashMap.get(key));
+        for (String key : keys) {
+            System.out.println(key + ":" + hashMap.get(key));
+        }
 
         hashMap.replace("qq", 1000);
         hashMap.put("fqq", 10);
         hashMap.replace("qwe", 9999);
 
         Set<Map.Entry<String, Integer>> entrySet = hashMap.entrySet();
-        for (Map.Entry<String, Integer> entry : entrySet) System.out.println(entry.getKey() + ":" + entry.getValue());
+        for (Map.Entry<String, Integer> entry : entrySet) {
+            System.out.println(entry.getKey() + ":" + entry.getValue());
+        }
 
     }
 
