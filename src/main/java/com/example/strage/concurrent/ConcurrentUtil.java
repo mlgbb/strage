@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 /**
  * @description:并发包
  * */
-public class ConcurrentUtil {
+public class ConcurrentUtil implements Runnable{
     /**
      * 1、ConcurrentHashMap:并发版HashMap
      * 2、CopyOnWriteArrayList:并发版ArrayList
@@ -29,13 +29,21 @@ public class ConcurrentUtil {
     static ConcurrentHashMap<String,String> concurrentHashMap = new ConcurrentHashMap<>();
 
     public static void main(String[] args){
-        concurrentHashMap();
+        concurrentHashMap1();
+//        try {
+//            concurrentHashMap2();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
     }
 
-    public static void concurrentHashMap(){
+    public static void concurrentHashMap1(){
+         Map<String,String> map1 = new HashMap<>();
+         ConcurrentHashMap<String,String> concurrentHashMap2 = new ConcurrentHashMap<>();
+
         new Thread(()->{
-            map.put("a","1");
-            concurrentHashMap.put("a","1");
+            map1.put("a","1");
+            concurrentHashMap2.put("a","1");
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -44,8 +52,8 @@ public class ConcurrentUtil {
         }).start();
 
         new Thread(()->{
-            map.put("b","2");
-            concurrentHashMap.put("b","2");
+            map1.put("b","2");
+            concurrentHashMap2.put("b","2");
             try {
                 Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -53,23 +61,51 @@ public class ConcurrentUtil {
             }
         }).start();
 
-        new Thread(()->{
-            map.put("c","3");
-            concurrentHashMap.put("c","3");
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }).start();
 
-        System.out.println(map.toString());
-        System.out.println(concurrentHashMap.toString());
 
+//        new Thread(()->{
+//            map.put("c","3");
+//            concurrentHashMap.put("c","3");
+//            try {
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//            }
+//        }).start();
+
+        System.out.println(map1.toString());
+        System.out.println(concurrentHashMap2.toString());
         /**
          * 输出：{a=1}
          * {a=1, b=2}
          *
          * */
+    }
+
+    public static void concurrentHashMap2() throws InterruptedException {
+        Map<String,String> map = new HashMap<>();
+        ConcurrentHashMap<String,String> concurrentHashMap = new ConcurrentHashMap<>();
+        Map<String,String> map3 = new HashMap<>();
+        Thread t1 = new Thread();
+        t1.start();
+        map.put("a","1");
+        concurrentHashMap.put("a","1");
+        Thread.currentThread().sleep(10000);
+
+        Thread t2 = new Thread();
+        t2.start();
+        map.put("b","2");
+        concurrentHashMap.put("b","2");
+
+        map3.put("c","3");
+
+        System.out.println(map.toString());
+        System.out.println(concurrentHashMap.toString());
+        System.out.println(map3.toString());
+    }
+
+    @Override
+    public void run() {
+        
     }
 }
