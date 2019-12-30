@@ -3,6 +3,7 @@ package com.example.strage.config;
 import com.google.common.base.Predicates;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import springfox.documentation.RequestHandler;
 import springfox.documentation.builders.ApiInfoBuilder;
 import springfox.documentation.builders.ParameterBuilder;
 import springfox.documentation.builders.PathSelectors;
@@ -32,10 +33,13 @@ public class SwaggerConfig {
 //                .parameterType("header")
 //                .required(false).build();
 //        headers.add(parameterBuilder.build());
+
+        com.google.common.base.Predicate<RequestHandler> selector1 = RequestHandlerSelectors.basePackage("com.example.strage.controller");
+        com.google.common.base.Predicate<RequestHandler> selector2 = RequestHandlerSelectors.basePackage("com.example.strage.springbootdemo.controller");
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.example.strage.controller"))
+                .apis(Predicates.or(selector1,selector2))
                 //不显示错误的接口地址
                 .paths(Predicates.not(PathSelectors.regex("/error.*")))
                 .paths(PathSelectors.any())
