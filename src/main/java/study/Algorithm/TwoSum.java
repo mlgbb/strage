@@ -1,6 +1,11 @@
 package study.Algorithm;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.TreeMap;
+
+import static java.lang.Math.max;
 
 public class TwoSum {
     public static void main(String[] args) {
@@ -10,12 +15,18 @@ public class TwoSum {
 //        System.out.println(Arrays.toString(twoSum2(nums, target)));
 
 //      两数相加
-        ListNode l1 = new ListNode(5);
-        ListNode l2 = new ListNode(7);
-        ListNode l3 = addTwoNumbers(l1, l2);
+//        ListNode l1 = new ListNode(5);
+//        ListNode l2 = new ListNode(7);
+//        ListNode l3 = addTwoNumbers(l1, l2);
+//        System.out.print(l3);
 
-        System.out.print(l3);
+        // 无重复最长子串
+//        System.out.println(lengthOfLongestSubstring("abcadef"));
 
+        // 求两个数组的中位数
+        int[] nums1 = new int[]{1, 4, 9, 10};
+        int[] nums2 = new int[]{2, 5, 11, 10};
+        System.out.println(findMedianSortedArrays(nums1, nums2));
     }
 
     public static int[] twoSum(int[] nums, int target) { // 解法一 暴力
@@ -68,6 +79,46 @@ public class TwoSum {
         l1.next = addTwoNumbers(l1.next, l2.next); //重要部分 递归 用于重新连接携带着新的值的l1节点
         return l1;
     }
+
+    public static int lengthOfLongestSubstring(String s) {
+        if (s.length() == 0) {
+            return 0;
+        }
+        int maxStr = 0;
+        LinkedList<Character> Str = new LinkedList();
+        for (int i = 0; i < s.length(); i++) {
+            while (Str.contains(s.charAt(i))) {
+                Str.remove();
+            }
+            Str.add(s.charAt(i));
+            maxStr = max(maxStr, Str.size());
+        }
+        return maxStr;
+    }
+
+    public int[] sortArray() {
+
+        return null;
+    }
+
+    public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
+        if (nums1 == null) {
+            return (double) (nums2[(nums2.length + 1) / 2 - 1] + nums2[(nums2.length + 2) / 2 - 1]) / 2;
+        }
+        if (nums2 == null) {
+            return (double) (nums1[(nums1.length + 1) / 2 - 1] + nums1[(nums1.length + 2) / 2 - 1]) / 2;
+        }
+        int[] nums3 = new int[nums1.length + nums2.length];
+        for (int i = 0; i < nums3.length; i++) {
+            if (i < nums1.length) {
+                nums3[i] = nums1[i];
+            } else {
+                nums3[i] = nums2[i - nums1.length];
+            }
+        }
+        Arrays.sort(nums3);
+        return (double) (nums3[(nums3.length + 1) / 2 - 1] + nums3[(nums3.length + 2) / 2 - 1]) / 2;
+    }
 }
 
 class ListNode {
@@ -83,7 +134,7 @@ class ListNode {
         String str = String.valueOf(val);
         ListNode temp = next;
         while (temp != null) {
-            str += "->" + String.valueOf(temp.val);
+            str += "->" + temp.val;
             temp = temp.next;
         }
         return str;
