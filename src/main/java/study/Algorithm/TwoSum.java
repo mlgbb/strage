@@ -24,9 +24,11 @@ public class TwoSum {
 //        System.out.println(lengthOfLongestSubstring("abcadef"));
 
         // 求两个数组的中位数
-        int[] nums1 = new int[]{1, 4, 9, 10};
-        int[] nums2 = new int[]{2, 5, 11, 10};
-        System.out.println(findMedianSortedArrays(nums1, nums2));
+//        int[] nums1 = new int[]{1, 4, 9, 10};
+//        int[] nums2 = new int[]{2, 5, 11, 10};
+//        System.out.println(findMedianSortedArrays(nums1, nums2));
+
+        //最长回文子串
     }
 
     public static int[] twoSum(int[] nums, int target) { // 解法一 暴力
@@ -96,10 +98,6 @@ public class TwoSum {
         return maxStr;
     }
 
-    public int[] sortArray() {
-
-        return null;
-    }
 
     public static double findMedianSortedArrays(int[] nums1, int[] nums2) {
         if (nums1 == null) {
@@ -119,6 +117,12 @@ public class TwoSum {
         Arrays.sort(nums3);
         return (double) (nums3[(nums3.length + 1) / 2 - 1] + nums3[(nums3.length + 2) / 2 - 1]) / 2;
     }
+
+    public static  String longestPalindrome(String s){
+
+        return null;
+    }
+
 }
 
 class ListNode {
