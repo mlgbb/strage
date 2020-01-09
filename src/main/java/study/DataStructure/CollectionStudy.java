@@ -144,7 +144,7 @@ public class CollectionStudy {
 
     private static void treeMap() {
         TreeMap<Integer, String> treeMap = new TreeMap<>();//红黑树数据结构实现的不能根据value来排序
-        //非要排序的话 把TreeMap的EntrySet转换成list，然后使用Collections.sor排序
+        //非要排序的话 把TreeMap的EntrySet转换成list，然后使用Collections.sort排序
         treeMap.put(1, "千手柱间");
         treeMap.put(4, "宇智波泉奈");
         treeMap.put(5, "宇智波鼬");
@@ -239,7 +239,9 @@ public class CollectionStudy {
         }};
 
     }
-
+    /**
+     * 将LinkedList当作 LIFO(先进后出)的栈
+     */
     private static void useLinkedListAsLIFO() {
         System.out.println("\nuseLinkedListAsLIFO");
         // 新建一个LinkedList
